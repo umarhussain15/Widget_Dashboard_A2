@@ -1,0 +1,18 @@
+-GitHub Link
+https://github.com/umarhussain15/Widget_Dashboard_A2/
+
+Description:
+------------
+- Its a single page fat client app.
+-Dashboard, Weather Deatails, Monthly Calander and Analog Clock
+ all are placed in seprate div and hidden using ng-show.
+-When a dashboard item is clicked it call ng-click linked function and hide
+ all other divs and show the requested div.
+-All detail view widgets have link for dashboard so that we can go back.
+-Clock widget gets time form user's machine time and display it.
+-Calander also compute full calander with the help of date taken from pc.
+-Monthly view of calander can show both previous and next months.
+-Calander data is updated through ng-controller.
+-For Weather widget data is taken from weather.com's API via angularJS http method
+-API return JSON for City specified, which is then saved to localStorage() for further processing
+-JSON contains detail for current weather condition and also contain forecast for next 3 days

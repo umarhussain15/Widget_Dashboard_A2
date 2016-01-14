@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Calender with weather</title>
+    <link rel="shortcut icon" href="">
+
+    <link rel="stylesheet" href="./css/experiment.css">
+    <link rel="stylesheet" href="./css/dash.css">
+
+    <!--    <script src="./jquery.min.js"></script>-->
+    <script src="./js/angular.min.js"></script>
+
+</head>
+
+<body ng-app="myApp" ng-controller="init">
+    <div class="row" ng-show="showdash">
+        <div class="row today">Widget Dashboard</div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class=" dash row " id="dash" ng-show="showdash">
+            <div style="border-bottom-width:3px;border-bottom-color:white; border-bottom-style:solid ;cursor: pointer" class="eq col-4" ng-click="showClock()">
+                <div class=" dash-item">
+                    <div style="border-bottom-width:3px;border-bottom-color:white; border-bottom-style:solid ;font-size:50px" class="row">
+                        <div class="col-8" id="txt"></div>
+                        <div style="border-left-width:3px;border-left-color:white; border-left-style:solid;font-size:70px " class="col-4" id="ap"></div>
+
+                    </div>
+                    <div class="sub" ng-controller="zone">{{zone}}</div>
+                </div>
+                <!--            <div class="sub" ng-controller="zone">{{zone}}</div>-->
+                <div class="nm">Time</div>
+            </div>
+            <!--        <div class="col-05"></div>-->
+            <div style="cursor: pointer" class="eq col-4" ng-click="showCalendar()">
+                <div class="dash-item">
+
+                    <div style="border-bottom-width:3px;border-bottom-color:white; border-bottom-style:solid" class="row" ng-controller="zone">
+                        <div class="col-5">{{today | date:'dd'}}
+                            <div class="sub">{{today | date:'EEEE'}}</div>
+                        </div>
+                        <div style="border-left-width:3px;border-left-color:white; border-left-style:solid ;font-size: 35px" class="col-7">{{today | date:'MMMM, yyyy'}}</div>
+
+                    </div>
+
+                </div>
+                <!--            <div class="sub" ng-controller="zone">{{zone}}</div>-->
+                <div class="nm">Calendar</div>
+            </div>
+            <!--        <div class="col-05"></div>-->
+            <div style="cursor: pointer" class="eq col-4" ng-click="showWeather()">
+                <div class="dash-item" ng-controller="weather">
+                    <!--               <div class="sub" >{{location}}</div>-->
+                    <div style="border-bottom-width:3px;border-bottom-color:white; border-bottom-style:solid" class="row">
+                        <div class="col-6">
+                            <div class="sub">Now</div>
+                            <div>{{weather.ctemp}}</div>
+                        </div>
+                        <div class="col-3">
+
+                            <center>
+                                <img style="margin-left:-5px;" ng-src='{{weather.icon}}' />
+                                <div class="mini">{{weather.weather}}</div>
+                            </center>
+                        </div>
+                        <div style="border-left-width:3px;border-left-color:white; border-left-style:solid" class="mini col-3">
+                            <div class="sub">Today's</div>
+                            <br>
+                            <div>Hi: {{weather.high}}</div>
+                            <div>Lo: {{weather.low}}</div>
+                        </div>
+                    </div>
+                    <div class="sub">{{weather.location}}</div>
+                </div>
+
+                <div class="nm">Weather</div>
+            </div>
+        </div>
+    </div>
+    <!--Analog clock Setup-->
+    <div class="row experiment" id="analog-c" ng-show="showclock">
+        <div class="row today ">Clock Widget</div>
+        <div class="row" id="experiment">
+            <div id="clock">
+                <div id="hour"><img src="images/hourHand.png" /></div>
+                <div id="minute"><img src="images/minuteHand.png" /></div>
+                <div id="second"><img src="images/secondHand.png" /></div>
+            </div>
+        </div>
+        <div style="cursor: pointer" class="nm" ng-click="showDash()">Back to DashBoard</div>
+    </div>
+    <div class="row" ng-show="showweather"></div>
+    <!--Calendar Setup-->
+    <div class="row" id="calendar" ng-show="true && showcalendar">
+        <div class="row " id="today">
+            <div id="prev" class="col-3 button" ng-click="prev()">
+                <a href="#">
+                    <</a>
+            </div>
+            <div class="col-6 today">{{date | date:'MMMM, yyyy'}}</div>
+            <div id="next" ng-click="next()" class="col-3 button"><a href="#">></a></div>
+
+        </div>
+        <br/>
+        <center>
+            <div class="row drow" id="days">
+
+
+                <div class="day col-c">Mon</div>
+                <div class="day col-c">Tue</div>
+                <div class="day col-c">Wed</div>
+                <div class="day col-c">Thu</div>
+                <div class="day col-c">Fri</div>
+                <div class="day col-c">Sat</div>
+                <div class="day col-c">Sun</div>
+            </div>
+
+            <br/>
+            <div class="row">
+                <div class="row" class="week" ng-repeat="w in war">
+                    <div class="day col-c" class="week" ng-repeat="day in days[w]" ng-class="{notcurr: !curr[w][day], todays: isToday(day,w) , active : isSelected(day,w)}" ng-click="setMaster(day,w)">{{day}}</div>
+
+                </div>
+            </div>
+        </center>
+        <br>
+        <br>
+        <div style="cursor: pointer" class="nm" ng-click="showDash()">Back to DashBoard</div>
+    </div>
+
+    <!--Weather Details Setup-->
+    <div class="row" id="weather" ng-show="true && showweather">
+        <div class="row today">Weather Details</div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 nm sub">Location: {{weather.location}} Date: {{weather.date |date:'dd, MMMM, yyyy'}}</div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row" ng-controller="detail">
+            <div class=" row drow " ng-repeat='w in details'>
+                <div class="col-2"></div>
+                <div class="col-4">{{w.name}}</div>
+                <div class="col-4">{{w.value}}</div>
+                <div class="col-2"></div>
+            </div>
+
+        </div>
+
+        <div class="row todays">Forecast</div>
+        <div class="row" ng-controller="forecast">
+            <div class="col-4 " ng-repeat="f in forecast">
+                <div style="height:auto" class="row dash-item">
+                    <div class="col-6 mini">
+                        <br>
+                        <div>Hi: {{f.high}}</div>
+                        <div>Lo: {{f.low}}</div>
+                    </div>
+                    <div class="col-6">
+
+                        <center>
+                            <img style="margin-left:-5px;" ng-src='{{f.icon}}' />
+                            <div class="mini">{{f.weather}}</div>
+                        </center>
+                    </div>
+
+                </div>
+                <div class="nm sub">{{f.day}}</div>
+            </div>
+        </div>
+        <div style="cursor: pointer" class="nm sub" ng-click="showDash()">Back to DashBoard</div>
+    </div>
+    <script src="./js/experiment.js"></script>
+    <script src="./js/dash.js"></script>
+</body>
+
+</html>

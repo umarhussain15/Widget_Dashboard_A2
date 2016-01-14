@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+    font-family: Verdana, sans-serif;
+}
+label {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/*.row {position: relative;}*/
+
+[class*="col-"] {
+    float: left;
+    padding: 5px;
+        display: table-column;
+/*    display: table-cell;*/
+    vertical-align: middle;
+    
+}
+.row:after,
+.row:before {
+    content: "";
+    clear: both;
+    display: block;
+}
+.button {
+    /*Step 2: Basic Button Styles*/
+    display: block;
+    height: 50px;
+    background-color: #8ae462;
+    /*Step 3: Text Styles*/
+    color: white;
+    text-align: center;
+    font: bold 35px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+.button > a {
+    text-decoration: none;
+    color: white;
+}
+
+/*Step 3: Link Styling*/
+
+a.button {
+    text-decoration: none;
+}
+.col-1 {
+    width: 8.33%;
+}
+.col-30{
+width:30%;
+}
+.col-05{
+width:5%;
+}
+.col-2 {
+    width: 16.66%;
+}
+.col-3 {
+    width: 25%;
+}
+.col-4 {
+    width: 33.33%;
+}
+.col-5 {
+    width: 41.66%;
+}
+.col-6 {
+    width: 50%;
+}
+.col-7 {
+    width: 58.33%;
+}
+.col-8 {
+    width: 66.66%;
+}
+.col-9 {
+    width: 75%;
+}
+.col-10 {
+    width: 83.33%;
+}
+.col-11 {
+    width: 91.66%;
+}
+.col-12 {
+    width: 100%;
+}
+.col-c {
+    width: 14%;
+}
+.today {
+    color: white;
+    background-color: #6dde3c;
+    height: 50px;
+    text-align: center;
+    font-size: 25px;
+}
+.drow {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: cornflowerblue;
+    font-size: 20px;
+    color: dodgerblue;
+}
+.todays {
+    color: white;
+    background-color: #8ae462;
+}
+.active {
+    color: white;
+    background-color: cornflowerblue;
+}
+.dash {
+/*        position: absolute;*/
+    /* or absolute */
+/*    top: 50%;*/
+    /*    left: 25%;*/
+    /*    margin: 10px;*/
+/*    padding-bottom: 0px;*/
+    white-space: normal;
+    
+}
+.dash-item {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 123px;
+    /*    margin: 10px;*/
+    background-color: #6dde3c;
+    color: white;
+    font-size: 40px;
+}
+.nm {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: dodgerblue;
+    color: white;
+    height: 35px;
+    font-size: 30px;
+}
+.sub {
+    font-size: 20px;
+}
+.mini{
+    font-size: 14px;
+}
+
+.notcurr{
+color: darkgrey;
+}
